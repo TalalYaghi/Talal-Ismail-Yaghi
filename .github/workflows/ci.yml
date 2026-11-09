@@ -1,0 +1,38 @@
+name: Test and build Docker image
+
+on:
+  push:
+    branches: [main, 'feature/**']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+      - name: Install locked dependencies
+        run: pip install -r requirements.txt
+      - name: Test application behavior
+        run: python -m unittest discover -s tests -v
+      - name: Build runtime image
+        run: docker compose build
+      - name: Start and wait for healthcheck
+        run: docker compose up -d --wait --wait-timeout 60
+      - name: Verify HTTP and persistent storage
+        run: python scripts/smoke_test.py
+      - name: Container logs
+        if: always()
+        run: docker compose logs
+      - name: Stop containers
+        if: always()
+        run: docker compose down
