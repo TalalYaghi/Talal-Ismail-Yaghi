@@ -31,4 +31,4 @@ Git commits are local until pushed; being signed in to GitHub in Chrome does not
 
 ## Evidence
 
-Screenshots in `docs/screenshots/` show the real application and verification results. Demo cards are sample coursework added by `scripts/seed_demo.py`; they are not claims that those coursework items were submitted.
+Screenshots in `docs/screenshots/` show the real application and verification results. `01-docker-build.png` and `02-container-running.png` are unedited desktop captures of Windows Terminal running the Docker commands on the assignment laptop. Demo cards are sample coursework added by `scripts/seed_demo.py`; they are not claims that those coursework items were submitted.

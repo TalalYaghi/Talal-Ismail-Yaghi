@@ -175,7 +175,7 @@ docker-compose.yml     One-command startup and persistent named volume
 
 ## Assignment evidence
 
-All submission screenshots are in [docs/screenshots](docs/screenshots/). Build and container screenshots display actual command transcripts captured from Ubuntu WSL. The browser, GitHub commit history, merged PR and successful Actions run are captured directly from the working application or GitHub.
+All submission screenshots are in [docs/screenshots](docs/screenshots/). Build and container evidence consists of unedited desktop screenshots of Windows Terminal running Docker in Ubuntu WSL on the assignment laptop. The browser, GitHub commit history, merged PR and successful Actions run are captured directly from the working application or GitHub.
 
 ## Attribution and license
 
