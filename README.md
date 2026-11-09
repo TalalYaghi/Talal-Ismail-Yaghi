@@ -1,5 +1,7 @@
 # Campus Taskboard
 
+[![Test and build Docker image](https://github.com/TalalYaghi/Talal-Ismail-Yaghi/actions/workflows/ci.yml/badge.svg)](https://github.com/TalalYaghi/Talal-Ismail-Yaghi/actions/workflows/ci.yml)
+
 A focused workspace for university assignments. Plan tasks by course, set priorities and due dates, and move work from **To do → In progress → Done**. Search your board, filter by priority, and keep your tasks between restarts with SQLite storage.
 
 **Author:** Talal Ismail Yaghi · **Course:** OS Lab, Assignment 2 (Docker & GitHub)
@@ -169,7 +171,11 @@ docker-compose.yml     One-command startup and persistent named volume
 - **C - Multi-stage:** build wheels separately and install into a clean runtime stage.
 - **D - Healthcheck:** `/health` queries SQLite; Docker monitors it every 15 seconds.
 - **E - Convenience:** Makefile and PowerShell helper.
-- **G - PR workflow:** Docker/CI work developed on `feature/docker-workflow` for review into `main`.
+- **G - PR workflow:** Docker/CI work developed on `feature/docker-workflow` and merged into `main` through [pull request #1](https://github.com/TalalYaghi/Talal-Ismail-Yaghi/pull/1) after passing CI.
+
+## Assignment evidence
+
+All submission screenshots are in [docs/screenshots](docs/screenshots/). Build and container screenshots display actual command transcripts captured from Ubuntu WSL. The browser, GitHub commit history, merged PR and successful Actions run are captured directly from the working application or GitHub.
 
 ## Attribution and license
 
