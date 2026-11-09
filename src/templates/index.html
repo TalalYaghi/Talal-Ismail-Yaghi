@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172b36">
+  <meta name="description" content="A focused workspace for your courses, assignments, and next steps.">
+  <title>Campus Taskboard | Your semester, in focus</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='16' width='64' height='64' fill='%23172b36'/%3E%3Cpath d='M18 33l10 10 19-23' fill='none' stroke='%23b9e5c6' stroke-width='7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a href="/" class="brand"><span class="brand-mark">✓</span><span>campus<span class="brand-sub">TASKBOARD</span></span></a>
+    <div class="workspace-label">YOUR WORKSPACE</div>
+    <a href="#board" class="nav-item active"><span>▦</span> Task board <span class="nav-dot"></span></a>
+    <div class="sidebar-note"><span class="note-star">✳</span><h3>One task at a time.</h3><p>Big semesters start with small steps. Make room for your next one.</p><div class="note-lines"><i></i><i></i><i></i></div></div>
+    <div class="sidebar-bottom"><span class="avatar">TY</span><div><strong>Talal Yaghi</strong><small>Student workspace</small></div></div>
+  </aside>
+  <main id="board">
+    <header class="topbar"><span>Workspace <span class="breadcrumb-slash">/</span> <strong>Task board</strong></span><span class="local-tag"><i></i> Saved locally</span></header>
+    <section class="page-heading"><div><div class="eyebrow">A LITTLE STRUCTURE. A LOT MORE FOCUS.</div><h1>Your semester, in focus<span>.</span></h1><p>Capture the work. Find your rhythm. Keep moving forward.</p></div><button class="button primary" id="new-task"><span>＋</span> New task</button></section>
+    <section class="stats" aria-label="Task summary">
+      <article><span class="stat-icon neutral">▦</span><div><span class="stat-label">Total tasks</span><strong id="total-count">0</strong></div><span class="stat-caption">On your radar</span></article>
+      <article><span class="stat-icon amber">◷</span><div><span class="stat-label">In progress</span><strong id="progress-count">0</strong></div><span class="stat-caption">Making moves</span></article>
+      <article><span class="stat-icon green">✓</span><div><span class="stat-label">Completed</span><strong id="done-count">0</strong></div><span class="stat-caption">Off your plate</span></article>
+    </section>
+    <section class="board-section"><div class="board-heading"><div><h2>Task board</h2><span id="result-count">Your next steps, all in one place.</span></div><div class="board-controls"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search tasks or courses" aria-label="Search tasks or courses"></label><select id="priority-filter" aria-label="Filter by priority"><option value="">All priorities</option><option value="high">High priority</option><option value="medium">Medium priority</option><option value="low">Low priority</option></select></div></div>
+    <div class="board-columns">
+      <section class="column" aria-labelledby="todo-label"><header><h3 id="todo-label"><i class="status-dot todo"></i>To do <span id="todo-count">0</span></h3><span class="column-symbol">○</span></header><div id="todo-list" class="task-list"></div><button class="add-task" data-status="todo">＋ Add a task</button></section>
+      <section class="column" aria-labelledby="progress-label"><header><h3 id="progress-label"><i class="status-dot progress"></i>In progress <span id="progress-column-count">0</span></h3><span class="column-symbol">◐</span></header><div id="progress-list" class="task-list"></div><button class="add-task" data-status="progress">＋ Add a task</button></section>
+      <section class="column" aria-labelledby="done-label"><header><h3 id="done-label"><i class="status-dot done"></i>Done <span id="done-column-count">0</span></h3><span class="column-symbol">✓</span></header><div id="done-list" class="task-list"></div><button class="add-task" data-status="done">＋ Add a task</button></section>
+    </div></section>
+    <footer class="page-footer"><span><i></i> Small steps. Steady progress.</span><span>Campus Taskboard <span class="footer-dot">·</span> OS Lab / 2026</span></footer>
+  </main>
+  <dialog id="task-dialog"><form id="task-form"><div class="dialog-header"><div><div class="eyebrow">MAKE SPACE FOR YOUR NEXT STEP</div><h2 id="dialog-title">New task</h2></div><button type="button" class="icon-button" id="close-dialog" aria-label="Close dialog">×</button></div><input type="hidden" name="id"><label>Task title<input name="title" required maxlength="120" placeholder="What needs to get done?"></label><div class="form-row"><label>Course<input name="course" maxlength="60" placeholder="e.g. Operating Systems"></label><label>Due date<input name="due_date" type="date"></label></div><div class="form-row"><label>Priority<select name="priority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label><label>Status<select name="status"><option value="todo">To do</option><option value="progress">In progress</option><option value="done">Done</option></select></label></div><label>Notes <span class="optional">(optional)</span><textarea name="notes" maxlength="1000" rows="3" placeholder="A little context for future you…"></textarea></label><p id="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="button danger" id="delete-task" hidden>Delete task</button><span></span><button type="button" class="button secondary" id="cancel-dialog">Cancel</button><button type="submit" class="button primary" id="save-task">Create task</button></div></form></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

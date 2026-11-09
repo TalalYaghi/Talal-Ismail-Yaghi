@@ -1,0 +1,1 @@
+"""Campus Taskboard application package."""
